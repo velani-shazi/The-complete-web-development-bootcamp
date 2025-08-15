@@ -1,26 +1,148 @@
 html, body {
     margin: 0;
     padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    color: #333;
 }
 
 .introduction {
-    background-image: url("pexels-ifreestock-585752.jpg");
-    height: 800px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-size: large;
+    background: url("pexels-ifreestock-585752.jpg") center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     color: white;
+    font-size: xx-large;
 }
 
-.introduction h1 {
-    position: absolute;
-    left: 25%;
+.intro-text h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3rem;
+    position: absolute; 
+    left: 25%; 
     top: 20%;
 }
 
-.introduction p {
-    position: absolute;
-    left: 25%;
-    top: 27%;
+.intro-text p {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    position: absolute; 
+    left: 26%; 
+    top: 35%;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FEF9E1;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.my-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.hello {
+    font-size: 2rem;
+    color: #A31D1D;
+    margin-top: 1rem;
+}
+
+.about-me {
+    max-width: 500px;
+    color: #6D2323;
+}
+
+.skills {
+    padding: 3rem 1rem;
+    background: #fff;
+}
+
+.skills > h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+article {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 1rem;
+    max-width: 300px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+article:hover {
+    transform: translateY(-5px);
+}
+
+article img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.contact-me {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: #FEF9E1;
+}
+
+.btn {
+    display: inline-block;
+    background: #A31D1D;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #800000;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #FFD700;
+}
+
+@media (max-width: 768px) {
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
 }
