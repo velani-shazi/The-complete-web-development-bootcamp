@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Book - My Book Notes</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Add New Book</h1>
+            <p class="subtitle">Share your thoughts about a book you've read</p>
+        </header>
+
+        <div class="form-container">
+            <form action="/books" method="POST" class="book-form">
+                
+                <div class="form-group">
+                    <label for="title">Book Title <span class="required">*</span></label>
+                    <input 
+                        type="text" 
+                        id="title" 
+                        name="title" 
+                        required 
+                        placeholder="Enter the book title"
+                        class="form-input"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Author <span class="required">*</span></label>
+                    <input 
+                        type="text" 
+                        id="author" 
+                        name="author" 
+                        required 
+                        placeholder="Enter the author's name"
+                        class="form-input"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="isbn">ISBN (for cover image)</label>
+                    <input 
+                        type="text" 
+                        id="isbn" 
+                        name="isbn" 
+                        placeholder="Enter 10 or 13 digit ISBN"
+                        class="form-input"
+                        maxlength="13"
+                    >
+                    <small class="form-help">
+                        📖 ISBN helps us fetch the book cover from Open Library. You can find it on the back of the book or online.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="rating">Your Rating</label>
+                    <div class="rating-input">
+                        <select id="rating" name="rating" class="form-input">
+                            <option value="">Select rating...</option>
+                            <option value="5">⭐⭐⭐⭐⭐ (5 - Loved it!)</option>
+                            <option value="4">⭐⭐⭐⭐ (4 - Really good)</option>
+                            <option value="3">⭐⭐⭐ (3 - It was okay)</option>
+                            <option value="2">⭐⭐ (2 - Didn't like it)</option>
+                            <option value="1">⭐ (1 - Hated it)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_read">Date Read</label>
+                    <input 
+                        type="date" 
+                        id="date_read" 
+                        name="date_read" 
+                        class="form-input"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Your Notes & Review</label>
+                    <textarea 
+                        id="notes" 
+                        name="notes" 
+                        rows="8" 
+                        placeholder="What did you think about this book? Key takeaways? Memorable quotes? Write your thoughts here..."
+                        class="form-input"
+                    ></textarea>
+                    <small class="form-help">
+                        💡 Tip: Include key insights, memorable quotes, or how the book changed your perspective.
+                    </small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        💾 Save Book
+                    </button>
+                    <a href="/" class="btn btn-secondary">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <footer>
+            <p><a href="/">← Back to all books</a></p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('isbn').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/[^0-9X]/gi, '');
+            e.target.value = value;
+        });
+
+        document.getElementById('date_read').max = new Date().toISOString().split('T')[0];
+    </script>
+</body>
+</html>
