@@ -50,6 +50,7 @@ Explores **CRUD operations**, **data persistence**, and clean UI design.
 
 * **Frontend:** HTML, CSS, JavaScript
 * **Backend:** Node.js, Express.js
+* **Database:** PostgreSql
 * **Templating:** EJS
 * **APIs & Data Handling:** RESTful APIs, JSON
 * **Tools:** Git, GitHub, VS Code
