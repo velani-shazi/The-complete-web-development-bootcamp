@@ -88,7 +88,7 @@ html, body {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    color: #1a1a2e;
+    color: #A31D1D;
 }
 
 .tech-stack {
@@ -111,7 +111,7 @@ html, body {
 }
 
 .tech-item {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #FFD700;
     color: white;
     padding: 0.7rem 1.5rem;
     border-radius: 25px;
@@ -134,7 +134,7 @@ html, body {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    color: #1a1a2e;
+    color: #800000;
 }
 
 .projects {
@@ -217,11 +217,11 @@ html, body {
 }
 
 .project-btn.secondary {
-    background: #667eea;
+    background: #FFD700;
 }
 
 .project-btn.secondary:hover {
-    background: #5568d3;
+    background: #e0cf6def;
 }
 
 .contact-me {
@@ -295,7 +295,7 @@ footer a:hover {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    color: #1a1a2e;
+    color: #800000;
 }
 
 .education-cert-container {
@@ -417,7 +417,7 @@ footer a:hover {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    color: #1a1a2e;
+    color: #800000;
 }
 
 .github-container {
@@ -452,7 +452,7 @@ footer a:hover {
 
 .github-btn {
     display: inline-block;
-    background: #333;
+    background: #FFD700;
     color: white;
     padding: 0.8rem 2rem;
     border-radius: 8px;
