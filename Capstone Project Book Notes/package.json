@@ -1,0 +1,32 @@
+{
+  "name": "book-notes",
+  "version": "1.0.0",
+  "description": "A personal book tracking and review application with PostgreSQL database and Open Library API integration",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "books",
+    "reading",
+    "notes",
+    "postgresql",
+    "express",
+    "ejs"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.86.0",
+    "axios": "^1.6.2",
+    "body-parser": "^1.20.2",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

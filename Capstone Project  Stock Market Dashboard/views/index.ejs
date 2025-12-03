@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Dashboard - Home</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+    
+    <main class="container">
+        <section class="hero">
+            <h1>Stock Market Intelligence</h1>
+            <p class="hero-subtitle">Real-time stock data, company insights, and market analytics</p>
+        </section>
+
+        <section class="search-section">
+            <form action="/search" method="POST" class="search-form">
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        name="symbol" 
+                        placeholder="Enter stock symbol (e.g., AAPL, TSLA, MSFT)" 
+                        required
+                        class="search-input"
+                    >
+                    <button type="submit" class="btn btn-primary">Search Stock</button>
+                </div>
+            </form>
+            <p class="search-hint">Popular: AAPL, MSFT, GOOGL, AMZN, TSLA, META, NVDA</p>
+        </section>
+
+        <% if (error) { %>
+            <div class="alert alert-error">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <% if (stockData) { %>
+            <section class="stock-details">
+                <!-- Company Header -->
+                <div class="company-header">
+                    <div class="company-info">
+                        <% if (stockData.profile.image) { %>
+                            <img src="<%= stockData.profile.image %>" alt="<%= stockData.profile.companyName %>" class="company-logo">
+                        <% } %>
+                        <div>
+                            <h2><%= stockData.profile.companyName %></h2>
+                            <p class="company-meta">
+                                <%= stockData.profile.symbol %> · 
+                                <%= stockData.profile.exchangeShortName %> · 
+                                <%= stockData.profile.sector %>
+                            </p>
+                        </div>
+                    </div>
+                    <% if (stockData.profile.website) { %>
+                        <a href="<%= stockData.profile.website %>" target="_blank" class="btn btn-secondary">Visit Website</a>
+                    <% } %>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-main">
+                        <span class="price-label">Current Price</span>
+                        <span class="price-value">$<%= stockData.quote.price.toFixed(2) %></span>
+                        <span class="price-change <%= stockData.quote.change >= 0 ? 'positive' : 'negative' %>">
+                            <%= stockData.quote.change >= 0 ? '▲' : '▼' %>
+                            $<%= Math.abs(stockData.quote.change).toFixed(2) %> 
+                            (<%= stockData.quote.changesPercentage %>%)
+                        </span>
+                    </div>
+                    <div class="price-details">
+                        <div class="price-item">
+                            <span class="label">Open</span>
+                            <span class="value">$<%= stockData.quote.open.toFixed(2) %></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="label">High</span>
+                            <span class="value">$<%= stockData.quote.dayHigh.toFixed(2) %></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="label">Low</span>
+                            <span class="value">$<%= stockData.quote.dayLow.toFixed(2) %></span>
+                        </div>
+                        <div class="price-item">
+                            <span class="label">Volume</span>
+                            <span class="value"><%= stockData.quote.volume.toLocaleString() %></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Market Cap</h3>
+                        <p class="metric-value">$<%= (stockData.profile.marketCap / 1e9).toFixed(2) %>B</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>P/E Ratio</h3>
+                        <p class="metric-value"><%= stockData.ratios.priceToEarningsRatioTTM?.toFixed(2) ? stockData.ratios.priceToEarningsRatioTTM?.toFixed(2) : 'N/A' %></p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>EPS</h3>
+                        <p class="metric-value"><%= stockData.ratios.netIncomePerShareTTM?.toFixed(2) ? stockData.ratios.netIncomePerShareTTM?.toFixed(2) : 'N/A' %></p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>52W Range</h3>
+                        <p class="metric-value"><%= stockData.quote.yearLow ? `$${stockData.quote.yearLow.toFixed(2)} - $${stockData.quote.yearHigh.toFixed(2)}` : 'N/A' %></p>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>About <%= stockData.profile.companyName %></h3>
+                    <p><%= stockData.profile.description %></p>
+                    <div class="company-details-grid">
+                        <div class="detail-item">
+                            <strong>CEO:</strong> <%= stockData.profile.ceo || 'N/A' %>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Industry:</strong> <%= stockData.profile.industry %>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Employees:</strong> <%= stockData.profile.fullTimeEmployees ? parseInt(stockData.profile.fullTimeEmployees).toLocaleString() : 'N/A' %>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Country:</strong> <%= stockData.profile.country %>
+                        </div>
+                    </div>
+                </div>
+
+                <% if (stockData.ratios) { %>
+<div class="info-section">
+    <h3>Financial Metrics (TTM)</h3>
+    <div class="financial-metrics">
+        <div class="metric-row">
+            <span class="metric-label">Revenue Per Share:</span>
+            <span class="metric-data">$<%= stockData.ratios.revenuePerShareTTM?.toFixed(2) || 'N/A' %></span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">Net Income Per Share:</span>
+            <span class="metric-data">$<%= stockData.ratios.netIncomePerShareTTM?.toFixed(2) || 'N/A' %></span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">Operating Cash Flow Per Share:</span>
+            <span class="metric-data">$<%= stockData.ratios.operatingCashFlowPerShareTTM?.toFixed(2) || 'N/A' %></span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">Free Cash Flow Per Share:</span>
+            <span class="metric-data">$<%= stockData.ratios.freeCashFlowPerShareTTM?.toFixed(2) || 'N/A' %></span>
+        </div>
+    </div>
+</div>
+<% } %>
+
+
+                <% if (stockData.ratios) { %>
+<div class="info-section">
+    <h3>Financial Ratios (TTM)</h3>
+    <div class="financial-metrics">
+        <div class="metric-row">
+            <span class="metric-label">Current Ratio:</span>
+            <span class="metric-data"><%= stockData.ratios.currentRatioTTM?.toFixed(2) || 'N/A' %></span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">Debt to Equity:</span>
+            <span class="metric-data"><%= stockData.ratios.debtToEquityRatioTTM?.toFixed(2) || 'N/A' %></span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">Price to Earnings Ratio:</span>
+            <span class="metric-data"><%= stockData.ratios.priceToEarningsRatioTTM?.toFixed(2) || 'N/A' %></span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">Price to Book Ratio:</span>
+            <span class="metric-data"><%= stockData.ratios.priceToBookRatioTTM?.toFixed(2) || 'N/A' %></span>
+        </div>
+    </div>
+</div>
+<% } %>
+
+            </section>
+        <% } else if (!searchPerformed) { %>
+            <section class="features">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Real-Time Data</h3>
+                        <p>Get up-to-date stock prices and market information</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏢</div>
+                        <h3>Company Insights</h3>
+                        <p>Detailed company profiles and financial metrics</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>Market Overview</h3>
+                        <p>Track top gainers, losers, and most active stocks</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚖️</div>
+                        <h3>Compare Stocks</h3>
+                        <p>Side-by-side comparison of different companies</p>
+                    </div>
+                </div>
+            </section>
+        <% } %>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

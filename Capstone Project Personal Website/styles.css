@@ -1,0 +1,501 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Quicksand', sans-serif;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+.introduction {
+    background: url("pexels-ifreestock-585752.jpg") center/cover no-repeat;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.intro-text h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    position: absolute;
+    left: 25%; 
+    top: 20%;
+}
+
+.intro-text p {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    animation: fadeInUp 1s ease-out 0.3s both;
+    left: 26%; 
+    top: 30%;
+    position: absolute;
+}
+
+.intro-text .role {
+    font-size: 1.3rem;
+    color: #FFD700;
+    font-weight: 600;
+    animation: fadeInUp 1s ease-out 0.6s both;
+    position: absolute;
+    left: 30%; 
+    top: 35%;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FEF9E1;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.my-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #A31D1D;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.hello {
+    font-size: 2.5rem;
+    color: #A31D1D;
+    margin-top: 1.5rem;
+    font-weight: 700;
+}
+
+.about-me {
+    max-width: 700px;
+    color: #6D2323;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-top: 1rem;
+}
+
+.skills {
+    padding: 4rem 2rem;
+    background: #fff;
+}
+
+.skills > h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: #1a1a2e;
+}
+
+.tech-stack {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    text-align: center;
+}
+
+.tech-stack h2 {
+    font-size: 1.8rem;
+    color: #A31D1D;
+    margin-bottom: 1.5rem;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.tech-item {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tech-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+.projects-section {
+    background: #f5f5f5;
+    padding: 4rem 2rem;
+}
+
+.projects-section > h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: #1a1a2e;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h3 {
+    font-size: 1.5rem;
+    color: #A31D1D;
+    margin-bottom: 0.8rem;
+}
+
+.project-content p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-tech span {
+    background: #e0e0e0;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    background: #A31D1D;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s;
+    font-weight: 600;
+}
+
+.project-btn:hover {
+    background: #800000;
+}
+
+.project-btn.secondary {
+    background: #667eea;
+}
+
+.project-btn.secondary:hover {
+    background: #5568d3;
+}
+
+.contact-me {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #FEF9E1;
+}
+
+.contact-me h2 {
+    font-size: 2.5rem;
+    color: #1a1a2e;
+    margin-bottom: 1rem;
+}
+
+.contact-me p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background: #A31D1D;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.btn:hover {
+    background: #800000;
+    transform: scale(1.05);
+}
+
+footer {
+    background: #1a1a2e;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 1.1rem;
+}
+
+footer a:hover {
+    color: #FFD700;
+}
+
+.education-certifications {
+    padding: 4rem 2rem;
+    background: white;
+}
+
+.education-certifications > h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: #1a1a2e;
+}
+
+.education-cert-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.education-block, .certifications-block {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.education-block h2, .certifications-block h2 {
+    color: #A31D1D;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.edu-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.edu-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.edu-content h3 {
+    color: #1a1a2e;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.institution {
+    color: #667eea;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.location, .duration {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cert-item {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cert-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.cert-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.cert-content h4 {
+    color: #1a1a2e;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.cert-content p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+
+.cert-year {
+    color: #A31D1D;
+    font-weight: 600;
+}
+
+.cert-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #667eea;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.cert-link:hover {
+    color: #A31D1D;
+    text-decoration: underline;
+}
+
+.github-section {
+    padding: 4rem 2rem;
+    background: #f5f5f5;
+}
+
+.github-section > h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: #1a1a2e;
+}
+
+.github-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.github-chart {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.github-chart img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.github-stats {
+    text-align: center;
+}
+
+.github-stats p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.github-btn {
+    display: inline-block;
+    background: #333;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+    font-weight: 600;
+}
+
+.github-btn:hover {
+    background: #000;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .github-chart img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 968px) {
+    .education-cert-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .intro-text p {
+        font-size: 1.3rem;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-list {
+        gap: 0.8rem;
+    }
+
+    .project-links {
+        flex-direction: column;
+    }
+}

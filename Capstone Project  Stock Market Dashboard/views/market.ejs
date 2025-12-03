@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Overview - Stock Market Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+    
+    <main class="container">
+        <section class="page-header">
+            <h1>Market Overview</h1>
+            <p>Today's market movers and sector performance</p>
+        </section>
+
+        <% if (error) { %>
+            <div class="alert alert-error">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <% if (sectorPerformance && sectorPerformance.length > 0) { %>
+        <section class="market-section">
+            <h2>Sector Performance</h2>
+            <div class="sector-grid">
+                <% sectorPerformance.forEach(sector => { %>
+                    <div class="sector-card">
+                        <h3><%= sector.sector %></h3>
+                        <p class="sector-change <%= parseFloat(sector.averageChange) >= 0 ? 'positive' : 'negative' %>">
+                            <%= parseFloat(sector.averageChange) >= 0 ? '▲' : '▼' %>
+                            <%= Math.abs(parseFloat(sector.averageChange)).toFixed(2) %>%
+                        </p>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+        <% } %>
+
+        <section class="market-section">
+            <div class="tabs">
+                <button class="tab-button active" onclick="showTab('gainers')">Top Gainers</button>
+                <button class="tab-button" onclick="showTab('losers')">Top Losers</button>
+                <button class="tab-button" onclick="showTab('actives')">Most Active</button>
+            </div>
+
+            <div id="gainers" class="tab-content active">
+                <% if (gainers && gainers.length > 0) { %>
+                    <div class="stocks-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Company</th>
+                                    <th>Price</th>
+                                    <th>Change</th>
+                                    <th>% Change</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% gainers.forEach(stock => { %>
+                                    <tr>
+                                        <td><strong><%= stock.symbol %></strong></td>
+                                        <td><%= stock.name %></td>
+                                        <td>$<%= stock.price.toFixed(2) %></td>
+                                        <td class="positive">+$<%= stock.change.toFixed(2) %></td>
+                                        <td class="positive">+<%= stock.changesPercentage.toFixed(2) %>%</td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% } else { %>
+                    <p class="no-data">No data available</p>
+                <% } %>
+            </div>
+
+            <div id="losers" class="tab-content">
+                <% if (losers && losers.length > 0) { %>
+                    <div class="stocks-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Company</th>
+                                    <th>Price</th>
+                                    <th>Change</th>
+                                    <th>% Change</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% losers.forEach(stock => { %>
+                                    <tr>
+                                        <td><strong><%= stock.symbol %></strong></td>
+                                        <td><%= stock.name %></td>
+                                        <td>$<%= stock.price.toFixed(2) %></td>
+                                        <td class="negative">$<%= stock.change.toFixed(2) %></td>
+                                        <td class="negative"><%= stock.changesPercentage.toFixed(2) %>%</td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% } else { %>
+                    <p class="no-data">No data available</p>
+                <% } %>
+            </div>
+
+            <div id="actives" class="tab-content">
+                <% if (actives && actives.length > 0) { %>
+                    <div class="stocks-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Company</th>
+                                    <th>Price</th>
+                                    <th>Change</th>
+                                    <th>% Change</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% actives.forEach(stock => { %>
+                                    <tr>
+                                        <td><strong><%= stock.symbol %></strong></td>
+                                        <td><%= stock.name %></td>
+                                        <td>$<%= stock.price.toFixed(2) %></td>
+                                        <td class="<%= stock.change >= 0 ? 'positive' : 'negative' %>">
+                                            <%= stock.change >= 0 ? '+' : '' %>$<%= stock.change.toFixed(2) %>
+                                        </td>
+                                        <td class="<%= stock.changesPercentage >= 0 ? 'positive' : 'negative' %>">
+                                            <%= stock.changesPercentage >= 0 ? '+' : '' %><%= stock.changesPercentage.toFixed(2) %>%
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% } else { %>
+                    <p class="no-data">No data available</p>
+                <% } %>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script>
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
