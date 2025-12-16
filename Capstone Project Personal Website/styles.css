@@ -466,6 +466,52 @@ footer a:hover {
     transform: scale(1.05);
 }
 
+.support-section {
+    padding: 4rem 2rem;
+    background: #FEF9E1;
+    text-align: center;
+}
+
+.support-section h2 {
+    font-size: 2.5rem;
+    color: #A31D1D;
+    margin-bottom: 1rem;
+}
+
+.support-section > p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.support-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.or-text {
+    color: #999;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    font-weight: 500;
+}
+
+.bitcoin-link {
+    color: #A31D1D;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s, text-decoration 0.3s;
+    word-break: break-all;
+}
+
+.bitcoin-link:hover {
+    color: #800000;
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
     .github-chart img {
         width: 100%;
