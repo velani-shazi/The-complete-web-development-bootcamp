@@ -11,7 +11,7 @@ html, body {
 }
 
 .introduction {
-    background: url("pexels-ifreestock-585752.jpg") center/cover no-repeat;
+    background: url("laptop-with-notebook-cup-coffee-blue-background.jpg") center/cover no-repeat;
     height: 100vh;
     text-align: center;
     color: white;
@@ -23,34 +23,34 @@ html, body {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     position: absolute;
-    left: 25%; 
-    top: 20%;
+    left: 50%; 
+    top: 25%;
 }
 
 .intro-text p {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
     animation: fadeInUp 1s ease-out 0.3s both;
-    left: 26%; 
-    top: 30%;
+    left: 50%; 
+    top: 35%;
     position: absolute;
 }
 
 .intro-text .role {
     font-size: 1.3rem;
-    color: #FFD700;
+    color: #04C4D9;
     font-weight: 600;
     animation: fadeInUp 1s ease-out 0.6s both;
     position: absolute;
-    left: 30%; 
-    top: 35%;
+    left: 50%; 
+    top: 40%;
 }
 
 .about {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #FEF9E1;
+    background-color: #E0F7FA;
     padding: 4rem 2rem;
     text-align: center;
 }
@@ -58,22 +58,22 @@ html, body {
 .my-photo {
     width: 200px;
     height: 200px;
-    border-radius: 50%;
+    border-radius: 0;
     object-fit: cover;
-    border: 5px solid #A31D1D;
+    border: 5px solid #04C4D9;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
 .hello {
     font-size: 2.5rem;
-    color: #A31D1D;
+    color: #04C4D9;
     margin-top: 1.5rem;
     font-weight: 700;
 }
 
 .about-me {
     max-width: 700px;
-    color: #6D2323;
+    color: #00838F;
     font-size: 1.2rem;
     line-height: 1.8;
     margin-top: 1rem;
@@ -88,7 +88,7 @@ html, body {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    color: #A31D1D;
+    color: #04C4D9;
 }
 
 .tech-stack {
@@ -99,7 +99,7 @@ html, body {
 
 .tech-stack h2 {
     font-size: 1.8rem;
-    color: #A31D1D;
+    color: #04C4D9;
     margin-bottom: 1.5rem;
 }
 
@@ -111,7 +111,7 @@ html, body {
 }
 
 .tech-item {
-    background: #FFD700;
+    background: #04C4D9;
     color: white;
     padding: 0.7rem 1.5rem;
     border-radius: 25px;
@@ -134,7 +134,7 @@ html, body {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    color: #800000;
+    color: #04C4D9;
 }
 
 .projects {
@@ -170,7 +170,7 @@ html, body {
 
 .project-content h3 {
     font-size: 1.5rem;
-    color: #A31D1D;
+    color: #04C4D9;
     margin-bottom: 0.8rem;
 }
 
@@ -204,7 +204,7 @@ html, body {
     flex: 1;
     text-align: center;
     padding: 0.6rem 1rem;
-    background: #A31D1D;
+    background: #04C4D9;
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -213,26 +213,26 @@ html, body {
 }
 
 .project-btn:hover {
-    background: #800000;
+    background: #00838F;
 }
 
 .project-btn.secondary {
-    background: #FFD700;
+    background: #80DEEA;
 }
 
 .project-btn.secondary:hover {
-    background: #e0cf6def;
+    background: #00BCD4;
 }
 
 .contact-me {
     text-align: center;
     padding: 4rem 2rem;
-    background-color: #FEF9E1;
+    background-color: #E0F7FA;
 }
 
 .contact-me h2 {
     font-size: 2.5rem;
-    color: #1a1a2e;
+    color: #04C4D9;
     margin-bottom: 1rem;
 }
 
@@ -244,7 +244,7 @@ html, body {
 
 .btn {
     display: inline-block;
-    background: #A31D1D;
+    background: #04C4D9;
     color: white;
     padding: 1rem 2.5rem;
     border-radius: 8px;
@@ -255,7 +255,7 @@ html, body {
 }
 
 .btn:hover {
-    background: #800000;
+    background: #00838F;
     transform: scale(1.05);
 }
 
@@ -283,7 +283,7 @@ footer a {
 }
 
 footer a:hover {
-    color: #FFD700;
+    color: #04C4D9;
 }
 
 .education-certifications {
@@ -295,7 +295,7 @@ footer a:hover {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    color: #800000;
+    color: #04C4D9;
 }
 
 .education-cert-container {
@@ -314,7 +314,7 @@ footer a:hover {
 }
 
 .education-block h2, .certifications-block h2 {
-    color: #A31D1D;
+    color: #04C4D9;
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
     text-align: center;
@@ -389,7 +389,7 @@ footer a:hover {
 }
 
 .cert-year {
-    color: #A31D1D;
+    color: #04C4D9;
     font-weight: 600;
 }
 
@@ -404,7 +404,7 @@ footer a:hover {
 }
 
 .cert-link:hover {
-    color: #A31D1D;
+    color: #04C4D9;
     text-decoration: underline;
 }
 
@@ -417,7 +417,7 @@ footer a:hover {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
-    color: #800000;
+    color: #04C4D9;
 }
 
 .github-container {
@@ -452,7 +452,7 @@ footer a:hover {
 
 .github-btn {
     display: inline-block;
-    background: #FFD700;
+    background: #04C4D9;
     color: white;
     padding: 0.8rem 2rem;
     border-radius: 8px;
@@ -462,7 +462,7 @@ footer a:hover {
 }
 
 .github-btn:hover {
-    background: #000;
+    background: #00838F;
     transform: scale(1.05);
 }
 
@@ -474,7 +474,7 @@ footer a:hover {
 
 .support-section h2 {
     font-size: 2.5rem;
-    color: #A31D1D;
+    color: #04C4D9;
     margin-bottom: 1rem;
 }
 
@@ -499,7 +499,7 @@ footer a:hover {
 }
 
 .bitcoin-link {
-    color: #A31D1D;
+    color: #04C4D9;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
@@ -508,7 +508,7 @@ footer a:hover {
 }
 
 .bitcoin-link:hover {
-    color: #800000;
+    color: #00838F;
     text-decoration: underline;
 }
 
