@@ -20,19 +20,19 @@ html, body {
 
 .intro-text h1 {
     font-family: 'Fredoka One', cursive;
-    font-size: 3.5rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
     position: absolute;
     left: 50%; 
-    top: 25%;
+    top: 35%;
 }
 
 .intro-text p {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
     animation: fadeInUp 1s ease-out 0.3s both;
-    left: 50%; 
-    top: 35%;
+    left: 53%; 
+    top: 45%;
     position: absolute;
 }
 
