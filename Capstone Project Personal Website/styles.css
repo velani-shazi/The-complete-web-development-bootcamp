@@ -415,17 +415,17 @@ body {
     background: var(--secondary-color);
 }
 
-.projects-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.projects-container h2 {
+.projects-section > h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     color: var(--accent-color);
+}
+
+.projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .projects-subtitle {
