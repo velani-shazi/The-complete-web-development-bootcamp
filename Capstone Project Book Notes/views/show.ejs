@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= book.title %> - Review</title>
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📖 <%= book.title %></h1>
+      <p class="subtitle">by <%= book.author %></p>
+    </header>
+
+    <div class="book-detail">
+      <div class="book-cover large">
+        <% if (book.coverUrl) { %>
+          <img src="<%= book.coverUrl %>" alt="<%= book.title %> cover" />
+        <% } %>
+      </div>
+
+      <% if (book.rating) { %>
+        <p class="rating">
+          Rating: <strong><%= book.rating %>/5</strong>
+        </p>
+      <% } %>
+
+      <% if (book.date_read) { %>
+        <p>
+          📅 Read on
+          <%= new Date(book.date_read).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          }) %>
+        </p>
+      <% } %>
+
+      <hr />
+
+      <section class="full-review">
+        <h2>📝 Full Review</h2>
+
+        <% if (book.notes) { %>
+          <p><%= book.notes %></p>
+        <% } else { %>
+          <p><em>No review written for this book.</em></p>
+        <% } %>
+      </section>
+
+      <div class="book-actions">
+        <a href="/edit/<%= book.id %>" class="btn btn-edit">Edit</a>
+        <a href="/" class="btn btn-secondary">← Back</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>Happy reading 📚</p>
+    </footer>
+  </div>
+</body>
+</html>

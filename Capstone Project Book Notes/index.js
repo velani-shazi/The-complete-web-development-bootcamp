@@ -175,6 +175,29 @@ app.get("/api/cover/:isbn", async (req, res) => {
   }
 });
 
+app.get("/books/:id", async (req, res) => {
+  try {
+    const bookId = req.params.id;
+
+    const { data: book, error } = await supabase
+      .from("books")
+      .select("*")
+      .eq("id", bookId)
+      .single();
+
+    if (error) throw error;
+    if (!book) return res.status(404).send("Book not found");
+
+    book.coverUrl = getCoverUrl(book.isbn, "L");
+
+    res.render("show", { book });
+  } catch (err) {
+    console.error("Error loading book:", err);
+    res.status(500).send("Error loading book");
+  }
+});
+
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });

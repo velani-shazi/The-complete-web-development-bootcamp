@@ -47,6 +47,15 @@ app.get("/delete/:id", (req, res) => {
   res.redirect("/");
 });
 
+app.get("/post/:id", (req, res) => {
+  const post = posts.find(p => p.id == req.params.id);
+  if (post) {
+    res.render("post.ejs", { post: post });
+  } else {
+    res.redirect("/");
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

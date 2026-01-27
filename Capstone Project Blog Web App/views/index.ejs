@@ -21,7 +21,7 @@
 
     <% posts.forEach(function(post) { %>
       <div class="post-card">
-        <h2><%= post.title %></h2>
+        <h2><a href="/post/<%= post.id %>" class="post-link"><%= post.title %></a></h2>
         <p class="date"><%= post.date %></p>
         <p class="content"><%= post.content %></p>
         <div class="post-actions">

@@ -186,6 +186,11 @@ header h1 {
     flex-direction: column;
 }
 
+.book-card {
+    text-decoration: none;
+    color: inherit;
+}
+
 .book-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -417,6 +422,71 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+.book-detail {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.book-cover.large {
+    max-width: 350px;
+    margin: 0 auto 30px;
+    height: auto;
+}
+
+.book-cover.large img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.full-review {
+    text-align: left;
+    margin-top: 30px;
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.full-review h2 {
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.full-review p {
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: #444;
+    white-space: pre-wrap; /* preserves line breaks in reviews */
+}
+
+.book-detail .rating {
+    justify-content: center;
+    font-size: 1.1em;
+}
+
+.book-detail hr {
+    margin: 30px 0;
+    border: none;
+    height: 2px;
+    background: #eee;
+}
+
+.book-detail .book-actions {
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.book-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.book-actions .btn {
+    flex: 1;
 }
 
 @media (max-width: 768px) {
