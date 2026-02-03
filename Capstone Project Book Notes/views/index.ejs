@@ -3,133 +3,153 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Book Notes</title>
+    <title>The Book Chronicles - Literary Reviews & Notes</title>
     <link rel="stylesheet" href="/styles/main.css" />
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📚 My Book Notes</h1>
-            <p class="subtitle">A personal collection of books I've read and loved</p>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">📚 The Book Chronicles</div>
+            <a href="/new" class="btn btn-primary btn-sm">+ Write a Review</a>
+        </div>
+    </nav>
 
-            <div class="stats">
-                <span class="book-count">
-                    Total Books: <%= totalBooks %>
-                </span>
+    <header class="hero-header">
+        <div class="hero-content">
+            <h1>The Book Chronicles</h1>
+            <p class="hero-subtitle">Exploring the world through literature, one book at a time</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number"><%= totalBooks %></span>
+                    <span class="stat-label">Books Read</span>
+                </div>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <div class="action-bar">
-            <a href="/new" class="btn btn-primary">+ Add New Book</a>
-
-            <div class="sort-controls">
-                <span class="sort-label">Sort by:</span>
-
-                <a
-                    href="/?sort=rating"
-                    class="btn-sort <%= currentSort === 'rating' ? 'active' : '' %>"
-                >
-                    ⭐ Rating
-                </a>
-
-                <a
-                    href="/?sort=date"
-                    class="btn-sort <%= currentSort === 'date' ? 'active' : '' %>"
-                >
-                    📅 Date Read
-                </a>
-
-                <a
-                    href="/?sort=title"
-                    class="btn-sort <%= currentSort === 'title' ? 'active' : '' %>"
-                >
-                    🔤 Title
-                </a>
+    <div class="container">
+        <div class="controls-bar">
+            <div class="sort-filter">
+                <span class="filter-label">Sort by:</span>
+                <div class="sort-buttons">
+                    <a
+                        href="/?sort=rating"
+                        class="sort-btn <%= currentSort === 'rating' ? 'active' : '' %>"
+                    >
+                        Rating
+                    </a>
+                    <a
+                        href="/?sort=date"
+                        class="sort-btn <%= currentSort === 'date' ? 'active' : '' %>"
+                    >
+                        Recently Read
+                    </a>
+                    <a
+                        href="/?sort=title"
+                        class="sort-btn <%= currentSort === 'title' ? 'active' : '' %>"
+                    >
+                        Title
+                    </a>
+                </div>
             </div>
         </div>
 
         <% if (books.length === 0) { %>
             <div class="empty-state">
-                <h2>No books yet!</h2>
-                <p>Start adding books you've read to build your collection.</p>
-                <a href="/new" class="btn btn-primary">Add Your First Book</a>
+                <div class="empty-icon">📚</div>
+                <h2>Start Your Literary Journey</h2>
+                <p>No books in your collection yet. Begin by adding your first book review.</p>
+                <a href="/new" class="btn btn-primary btn-lg">Write Your First Review</a>
             </div>
         <% } else { %>
-            <div class="books-grid">
-                <% books.forEach(book => { %>
-                    <div class="book-card">
-
-                        <a href="/books/<%= book.id %>" class="book-link">
-                            <div class="book-cover">
-                                <% if (book.isbn) { %>
-                                    <img
-                                        src="<%= book.coverUrl %>"
-                                        alt="<%= book.title %> cover"
-                                    />
-                                <% } else { %>
-                                    <div class="no-cover">
-                                        <span>📖</span>
-                                        <p>No Cover</p>
-                                    </div>
-                                <% } %>
+            <div class="articles-list">
+                <% books.forEach((book, index) => { %>
+                    <article class="book-article">
+                        <div class="article-content">
+                            <div class="article-header">
+                                <a href="/books/<%= book.id %>" class="article-title-link">
+                                    <h2 class="article-title"><%= book.title %></h2>
+                                </a>
+                                <p class="article-author">by <strong><%= book.author %></strong></p>
                             </div>
 
-                            <div class="book-info">
-                                <h3 class="book-title"><%= book.title %></h3>
-                                <p class="book-author">by <%= book.author %></p>
-
+                            <div class="article-meta">
                                 <% if (book.rating) { %>
-                                    <div class="rating">
+                                    <div class="meta-item rating-badge">
                                         <% for (let i = 1; i <= 5; i++) { %>
-                                            <span class="star <%= i <= book.rating ? 'filled' : '' %>">
-                                                <%= i <= book.rating ? '★' : '☆' %>
-                                            </span>
+                                            <span class="star <%= i <= book.rating ? 'filled' : '' %>">★</span>
                                         <% } %>
+                                        <span class="rating-text"><%= book.rating %>/5</span>
                                     </div>
                                 <% } %>
-
-                                <% if (book.notes) { %>
-                                    <div class="notes-preview">
-                                        <p>
-                                            <%= book.notes.length > 150
-                                                ? book.notes.substring(0, 150) + '...'
-                                                : book.notes
-                                            %>
-                                        </p>
+                                <% if (book.date_read) { %>
+                                    <div class="meta-item date-badge">
+                                        <span class="read-date">
+                                            <%= new Date(book.date_read).toLocaleDateString('en-US', {
+                                                year: 'numeric',
+                                                month: 'short',
+                                                day: 'numeric'
+                                            }) %>
+                                        </span>
                                     </div>
                                 <% } %>
                             </div>
-                        </a>
 
-                        <div class="book-actions">
-                            <a href="/edit/<%= book.id %>" class="btn btn-edit">
-                                Edit
-                            </a>
+                            <% if (book.notes) { %>
+                                <div class="article-excerpt">
+                                    <p>
+                                        <%= book.notes.length > 200
+                                            ? book.notes.substring(0, 200) + '...'
+                                            : book.notes
+                                        %>
+                                    </p>
+                                </div>
+                            <% } %>
 
-                            <form
-                                action="/books/<%= book.id %>/delete"
-                                method="POST"
-                            >
-                                <button class="btn btn-delete">
-                                    Delete
-                                </button>
-                            </form>
+                            <div class="article-footer">
+                                <a href="/books/<%= book.id %>" class="read-more">Read Full Review</a>
+                                <div class="article-actions">
+                                    <a href="/edit/<%= book.id %>" class="btn-icon btn-edit-icon" title="Edit review">
+                                        ✏️
+                                    </a>
+                                    <form
+                                        action="/books/<%= book.id %>/delete"
+                                        method="POST"
+                                        style="display: inline;"
+                                    >
+                                        <button class="btn-icon btn-delete-icon" title="Delete review">
+                                            🗑️
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
 
-                    </div>
+                        <% if (book.coverUrl || !book.isbn) { %>
+                            <div class="article-cover">
+                                <% if (book.isbn && book.coverUrl) { %>
+                                    <img src="<%= book.coverUrl %>" alt="<%= book.title %> cover" />
+                                <% } else { %>
+                                    <div class="no-cover-article">
+                                        <span>📖</span>
+                                    </div>
+                                <% } %>
+                            </div>
+                        <% } %>
+                    </article>
                 <% }); %>
             </div>
         <% } %>
-
-        <footer>
-            <p>
-                Built with ❤️ for book lovers |
-                Powered by
-                <a href="https://openlibrary.org" target="_blank">
-                    Open Library API
-                </a>
-            </p>
-        </footer>
     </div>
+    <footer class="footer">
+            <div class="footer-content">
+                <p>The Book Chronicles © 2024 | Built for book enthusiasts</p>
+                <p>
+                    <a href="https://openlibrary.org" target="_blank" rel="noopener noreferrer">
+                        Powered by Open Library
+                    </a>
+                </p>
+            </div>
+        </footer>
 </body>
 </html>

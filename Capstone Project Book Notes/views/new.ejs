@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Book - My Book Notes</title>
+    <title>Write a Review - The Book Chronicles</title>
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📚 Add New Book</h1>
-            <p class="subtitle">Share your thoughts about a book you've read</p>
-        </header>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo" style="text-decoration: none;">📚 The Book Chronicles</a>
+            <a href="/" class="btn btn-secondary btn-sm" style="border: 2px solid #ecf0f1;">← Back to Library</a>
+        </div>
+    </nav>
 
+    <header class="hero-header">
+        <div class="hero-content">
+            <h1>Write a Review</h1>
+            <p class="hero-subtitle">Share your thoughts about a book you've read</p>
+        </div>
+    </header>
+
+    <div class="container">
         <div class="form-container">
             <form action="/books" method="POST" class="book-form">
                 
@@ -41,32 +50,30 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="isbn">ISBN (for cover image)</label>
+                    <label for="isbn">ISBN <span style="color: #999; font-weight: normal;"><em>(optional - for book cover)</em></span></label>
                     <input 
                         type="text" 
                         id="isbn" 
                         name="isbn" 
-                        placeholder="Enter 10 or 13 digit ISBN"
+                        placeholder="10 or 13 digit ISBN"
                         class="form-input"
                         maxlength="13"
                     >
                     <small class="form-help">
-                        📖 ISBN helps us fetch the book cover from Open Library. You can find it on the back of the book or online.
+                        Found on the back of the book or search online. Helps us display the cover image.
                     </small>
                 </div>
 
                 <div class="form-group">
                     <label for="rating">Your Rating</label>
-                    <div class="rating-input">
-                        <select id="rating" name="rating" class="form-input">
-                            <option value="">Select rating...</option>
-                            <option value="5">⭐⭐⭐⭐⭐ (5 - Loved it!)</option>
-                            <option value="4">⭐⭐⭐⭐ (4 - Really good)</option>
-                            <option value="3">⭐⭐⭐ (3 - It was okay)</option>
-                            <option value="2">⭐⭐ (2 - Didn't like it)</option>
-                            <option value="1">⭐ (1 - Hated it)</option>
-                        </select>
-                    </div>
+                    <select id="rating" name="rating" class="form-input">
+                        <option value="">Select a rating...</option>
+                        <option value="5">⭐ 5 Stars - Loved it!</option>
+                        <option value="4">⭐ 4 Stars - Really good</option>
+                        <option value="3">⭐ 3 Stars - It was okay</option>
+                        <option value="2">⭐ 2 Stars - Didn't enjoy it</option>
+                        <option value="1">⭐ 1 Star - Not for me</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -80,22 +87,22 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="notes">Your Notes & Review</label>
+                    <label for="notes">Your Review & Notes</label>
                     <textarea 
                         id="notes" 
                         name="notes" 
-                        rows="8" 
-                        placeholder="What did you think about this book? Key takeaways? Memorable quotes? Write your thoughts here..."
+                        rows="10" 
+                        placeholder="What did you think? Include key takeaways, memorable quotes, themes, or how it impacted you..."
                         class="form-input"
                     ></textarea>
                     <small class="form-help">
-                        💡 Tip: Include key insights, memorable quotes, or how the book changed your perspective.
+                        💡 Pro tip: Write detailed thoughts about characters, plot, writing style, and key insights to make your review more valuable.
                     </small>
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">
-                        💾 Save Book
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        📝 Publish Review
                     </button>
                     <a href="/" class="btn btn-secondary">
                         Cancel
@@ -103,11 +110,12 @@
                 </div>
             </form>
         </div>
-
-        <footer>
-            <p><a href="/">← Back to all books</a></p>
-        </footer>
     </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>The Book Chronicles © 2024 | Building a community of readers</p>
+        </div>
+    </footer>
 
     <script>
         document.getElementById('isbn').addEventListener('input', function(e) {

@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Book - My Book Notes</title>
+    <title>Edit Review - The Book Chronicles</title>
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>✏️ Edit Book</h1>
-            <p class="subtitle">Update your book information and notes</p>
-        </header>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo" style="text-decoration: none;">📚 The Book Chronicles</a>
+            <a href="/books/<%= book.id %>" class="btn btn-secondary btn-sm" style="border: 2px solid #ecf0f1;">← Back</a>
+        </div>
+    </nav>
 
+    <header class="hero-header">
+        <div class="hero-content">
+            <h1>Edit Review</h1>
+            <p class="hero-subtitle">Update your thoughts about <%= book.title %></p>
+        </div>
+    </header>
+
+    <div class="container">
         <div class="form-container">
             <form action="/books/<%= book.id %>" method="POST" class="book-form">
                 
@@ -43,33 +52,31 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="isbn">ISBN (for cover image)</label>
+                    <label for="isbn">ISBN <span style="color: #999; font-weight: normal;"><em>(optional - for book cover)</em></span></label>
                     <input 
                         type="text" 
                         id="isbn" 
                         name="isbn" 
                         value="<%= book.isbn || '' %>"
-                        placeholder="Enter 10 or 13 digit ISBN"
+                        placeholder="10 or 13 digit ISBN"
                         class="form-input"
                         maxlength="13"
                     >
                     <small class="form-help">
-                        📖 ISBN helps us fetch the book cover from Open Library. You can find it on the back of the book or online.
+                        Found on the back of the book or search online. Helps us display the cover image.
                     </small>
                 </div>
 
                 <div class="form-group">
                     <label for="rating">Your Rating</label>
-                    <div class="rating-input">
-                        <select id="rating" name="rating" class="form-input">
-                            <option value="" <%= !book.rating ? 'selected' : '' %>>Select rating...</option>
-                            <option value="5" <%= book.rating === 5 ? 'selected' : '' %>>⭐⭐⭐⭐⭐ (5 - Loved it!)</option>
-                            <option value="4" <%= book.rating === 4 ? 'selected' : '' %>>⭐⭐⭐⭐ (4 - Really good)</option>
-                            <option value="3" <%= book.rating === 3 ? 'selected' : '' %>>⭐⭐⭐ (3 - It was okay)</option>
-                            <option value="2" <%= book.rating === 2 ? 'selected' : '' %>>⭐⭐ (2 - Didn't like it)</option>
-                            <option value="1" <%= book.rating === 1 ? 'selected' : '' %>>⭐ (1 - Hated it)</option>
-                        </select>
-                    </div>
+                    <select id="rating" name="rating" class="form-input">
+                        <option value="" <%= !book.rating ? 'selected' : '' %>>Select a rating...</option>
+                        <option value="5" <%= book.rating === 5 ? 'selected' : '' %>>⭐ 5 Stars - Loved it!</option>
+                        <option value="4" <%= book.rating === 4 ? 'selected' : '' %>>⭐ 4 Stars - Really good</option>
+                        <option value="3" <%= book.rating === 3 ? 'selected' : '' %>>⭐ 3 Stars - It was okay</option>
+                        <option value="2" <%= book.rating === 2 ? 'selected' : '' %>>⭐ 2 Stars - Didn't enjoy it</option>
+                        <option value="1" <%= book.rating === 1 ? 'selected' : '' %>>⭐ 1 Star - Not for me</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -84,22 +91,22 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="notes">Your Notes & Review</label>
+                    <label for="notes">Your Review & Notes</label>
                     <textarea 
                         id="notes" 
                         name="notes" 
-                        rows="8" 
-                        placeholder="What did you think about this book? Key takeaways? Memorable quotes? Write your thoughts here..."
+                        rows="10" 
+                        placeholder="What did you think? Include key takeaways, memorable quotes, themes, or how it impacted you..."
                         class="form-input"
                     ><%= book.notes || '' %></textarea>
                     <small class="form-help">
-                        💡 Tip: Include key insights, memorable quotes, or how the book changed your perspective.
+                        💡 Pro tip: Write detailed thoughts about characters, plot, writing style, and key insights to make your review more valuable.
                     </small>
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">
-                        💾 Update Book
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        📝 Update Review
                     </button>
                     <a href="/" class="btn btn-secondary">
                         Cancel
@@ -108,22 +115,24 @@
             </form>
 
             <div class="danger-zone">
-                <h3>⚠️ Danger Zone</h3>
-                <p>Once you delete a book, there is no going back. Please be certain.</p>
+                <h3>⚠️ Delete This Review</h3>
+                <p>Once deleted, this review cannot be recovered. Please be absolutely certain.</p>
                 <form action="/books/<%= book.id %>/delete" method="POST" style="display: inline;">
                     <button 
                         type="submit" 
                         class="btn btn-danger"
-                        onclick="return confirm('Are you sure you want to delete this book? This action cannot be undone.')"
+                        onclick="return confirm('Are you sure? This will permanently delete this book review.')"
                     >
-                        🗑️ Delete This Book
+                        🗑️ Delete Review
                     </button>
                 </form>
             </div>
         </div>
 
-        <footer>
-            <p><a href="/">← Back to all books</a></p>
+        <footer class="footer">
+            <div class="footer-content">
+                <p>The Book Chronicles © 2024 | Building a community of readers</p>
+            </div>
         </footer>
     </div>
 

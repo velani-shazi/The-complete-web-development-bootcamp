@@ -2,6 +2,7 @@
   "name": "book-notes",
   "version": "1.0.0",
   "description": "A personal book tracking and review application with PostgreSQL database and Open Library API integration",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
